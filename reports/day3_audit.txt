@@ -1,0 +1,85 @@
+# Day-3 Audit Report
+Project root: D:\projects\crypto-index-bootcamp
+[PASS] exists: README -> D:\projects\crypto-index-bootcamp\README.md
+[PASS] exists: DATA_DICTIONARY -> D:\projects\crypto-index-bootcamp\docs\DATA_DICTIONARY.md
+[PASS] exists: BTC parquet -> D:\projects\crypto-index-bootcamp\data\processed\btc_daily.parquet
+[PASS] exists: ETH parquet -> D:\projects\crypto-index-bootcamp\data\processed\eth_daily.parquet
+[PASS] exists: Merged parquet -> D:\projects\crypto-index-bootcamp\data\processed\btc_eth_daily.parquet
+[PASS] exists: Index CSV -> D:\projects\crypto-index-bootcamp\data\index\spot_bh_btc_base1000.csv
+[PASS] exists: Plot 1 -> D:\projects\crypto-index-bootcamp\figures\btc_close.png
+[PASS] exists: Plot 2 -> D:\projects\crypto-index-bootcamp\figures\btc_index_base1000.png
+[PASS] exists: Loader -> D:\projects\crypto-index-bootcamp\src\data\coingecko.py
+[PASS] exists: Make prices -> D:\projects\crypto-index-bootcamp\src\data\make_prices.py
+[PASS] exists: Make index -> D:\projects\crypto-index-bootcamp\src\data\make_index_csv.py
+[PASS] exists: Plot script -> D:\projects\crypto-index-bootcamp\src\data\plot_sanity.py
+[PASS] exists: Tests -> D:\projects\crypto-index-bootcamp\tests\test_coingecko.py
+
+## BTC parquet preview
+shape=(366, 6), index.name=date, tz=UTC
+                                   open          high           low         close           vol  missing_hours
+date                                                                                                          
+2024-09-11 00:00:00+00:00  57624.161783  57624.161783  57624.161783  57624.161783  2.967609e+10          False
+2024-09-12 00:00:00+00:00  57381.764445  57381.764445  57381.764445  57381.764445  3.776565e+10          False
+2024-09-13 00:00:00+00:00  58106.951230  58106.951230  58106.951230  58106.951230  3.417786e+10          False
+2024-09-14 00:00:00+00:00  60620.627473  60620.627473  60620.627473  60620.627473  3.191974e+10          False
+2024-09-15 00:00:00+00:00  60003.299401  60003.299401  60003.299401  60003.299401  1.580012e+10          False
+[PASS] BTC columns include open/high/low/close/vol/missing_hours
+[PASS] BTC index is timezone-aware (UTC expected)
+[PASS] BTC has at least ~360 rows (last 365 days)
+
+## ETH parquet preview
+shape=(366, 6), index.name=date, tz=UTC
+                                  open         high          low        close           vol  missing_hours
+date                                                                                                      
+2024-09-11 00:00:00+00:00  2389.474011  2389.474011  2389.474011  2389.474011  1.250839e+10          False
+2024-09-12 00:00:00+00:00  2342.963924  2342.963924  2342.963924  2342.963924  1.469296e+10          False
+2024-09-13 00:00:00+00:00  2362.300238  2362.300238  2362.300238  2362.300238  1.161078e+10          False
+2024-09-14 00:00:00+00:00  2445.086210  2445.086210  2445.086210  2445.086210  1.312279e+10          False
+2024-09-15 00:00:00+00:00  2418.082808  2418.082808  2418.082808  2418.082808  7.248494e+09          False
+[PASS] ETH columns include open/high/low/close/vol/missing_hours
+[PASS] ETH index is timezone-aware (UTC expected)
+[PASS] ETH has at least ~360 rows (last 365 days)
+
+## Merged parquet preview
+shape=(368, 12), index.name=date, tz=UTC
+                               btc_open      btc_high       btc_low     btc_close       btc_vol  btc_missing_hours     eth_open     eth_high      eth_low    eth_close       eth_vol  eth_missing_hours
+date                                                                                                                                                                                                   
+2024-09-11 00:00:00+00:00  57624.161783  57624.161783  57624.161783  57624.161783  2.967609e+10              False  2389.474011  2389.474011  2389.474011  2389.474011  1.250839e+10              False
+2024-09-12 00:00:00+00:00  57381.764445  57381.764445  57381.764445  57381.764445  3.776565e+10              False  2342.963924  2342.963924  2342.963924  2342.963924  1.469296e+10              False
+2024-09-13 00:00:00+00:00  58106.951230  58106.951230  58106.951230  58106.951230  3.417786e+10              False  2362.300238  2362.300238  2362.300238  2362.300238  1.161078e+10              False
+2024-09-14 00:00:00+00:00  60620.627473  60620.627473  60620.627473  60620.627473  3.191974e+10              False  2445.086210  2445.086210  2445.086210  2445.086210  1.312279e+10              False
+2024-09-15 00:00:00+00:00  60003.299401  60003.299401  60003.299401  60003.299401  1.580012e+10              False  2418.082808  2418.082808  2418.082808  2418.082808  7.248494e+09              False
+[PASS] Merged columns are prefixed with btc_/eth_
+[PASS] Merged has at least ~350 rows (intersection)
+
+## Index CSV preview
+shape=(366, 4)
+         date  index_level  divisor  notes
+0  2024-09-11  1000.000000   1000.0    NaN
+1  2024-09-12   995.793477   1000.0    NaN
+2  2024-09-13  1008.378247   1000.0    NaN
+3  2024-09-14  1052.000161   1000.0    NaN
+4  2024-09-15  1041.287154   1000.0    NaN
+5  2024-09-16  1027.603707   1000.0    NaN
+6  2024-09-17  1010.186030   1000.0    NaN
+7  2024-09-18  1046.731616   1000.0    NaN
+8  2024-09-19  1066.226565   1000.0    NaN
+9  2024-09-20  1092.710547   1000.0    NaN
+[PASS] Index starts at 1000.0 on first date
+[PASS] Index dates strictly increasing
+[PASS] Index CSV has required columns (date, index_level, divisor, notes)
+
+## File fingerprints (sha256, first 16 hex)
+README           7530834e0047bff1
+DATA_DICTIONARY  716536ff27fcf0ab
+BTC parquet      225b7f6bc6de391d
+ETH parquet      9a685335a27dfb1f
+Merged parquet   d506ecd410e2adb2
+Index CSV        02ab1f764c936a89
+Plot 1           401c568fd4484fc8
+Plot 2           fd50897101f67254
+Loader           b82e97a7098eafd9
+Make prices      2cefba857bb4f996
+Make index       3bfd3969d03aefef
+Plot script      018a05175724cf6a
+Tests            7edc492035626583

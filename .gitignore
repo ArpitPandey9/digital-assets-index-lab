@@ -1,0 +1,11 @@
+# Byte-compiled / cache files
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environments
+.venv/
+
+# Data files (raw/cache if you don’t want them versioned)
+data/raw/
+data/processed/

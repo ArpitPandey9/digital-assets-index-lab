@@ -1,0 +1,10 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtualenv
+.venv/
+
+# (optional) data you don't want versioned
+data/raw/

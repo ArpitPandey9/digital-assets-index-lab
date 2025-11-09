@@ -21,3 +21,11 @@ python -m src.data.make_prices
 pytest -q
 python -m src.data.make_index_csv
 python -m src.data.plot_sanity
+
+
+[![CI](https://img.shields.io/github/actions/workflow/status/ArpitPandey9/digital-assets-index-lab/ci.yml?label=CI)](https://github.com/ArpitPandey9/digital-assets-index-lab/actions/workflows/ci.yml)
+![Python](https://img.shields.io/badge/python-3.10%7C3.11-blue)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![Lint: ruff](https://img.shields.io/badge/lint-ruff-46a)](https://github.com/astral-sh/ruff)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+[![Docs](https://img.shields.io/badge/docs-GitHub%20Pages-brightgreen)](https://arpitpandey9.github.io/digital-assets-index-lab/)

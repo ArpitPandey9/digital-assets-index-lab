@@ -1,5 +1,5 @@
-﻿# Crypto Index Bootcamp
-FREE-first, reproducible digital-asset index research. Python 3.13; pinned deps; UTC-only timestamps.
+﻿# digital-assets-index-lab
+Free-first, reproducible crypto/DeFi prediction & index research with purged CV, PBO, VaR/ES backtests, and S&P-style factsheets.
 
 ## One-command rebuild (PowerShell)
 ```powershell
